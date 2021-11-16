@@ -1,9 +1,13 @@
 from random import*
 def sign_in (a:str,b:str):#авторизация
     pass
-def sign_up(a:str,b:str): #регистрация
-    
+def psword_check(psword:str):
+    for i in range (0,13):
+        if psword[i].isdigit== True:
+            break
 def autopsword()->str:
+    """
+    """
     str0=".,:;!_*-+()/#¤%&"
     str1 = '0123456789'
     str2 = 'qwertyuiopasdfghjklzxcvbnm'
