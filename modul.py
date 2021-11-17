@@ -2,8 +2,9 @@ from random import*
 def psword_check(psword:str)->str:
     """функция вернет True если пароль будет соответствовать всем параметрам
     """
+    print(psword)
     for i in range(0,13,1):
-        if psword[i].isdigit()== True:
+        if psword[i].isdigit()== True: #string index out of range
             digit="True"
         if psword[i].isalpha()== True:
             alpha="True"
