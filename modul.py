@@ -2,7 +2,7 @@ from random import*
 def psword_check(psword:str)->str:
     """функция вернет True если пароль будет соответствовать всем параметрам
     """
-    for i in range(0,13,1): #так с каждой проверкой(заглавная буква, цифра и тд)
+    for i in range(0,13,1):
         if psword[i].isdigit()== True:
             digit="True"
         if psword[i].isalpha()== True:
@@ -11,9 +11,9 @@ def psword_check(psword:str)->str:
             upper="True"
         if psword[i].islower()==True:
             lower="True"
-        if psword[i] in [".",",","_"]:
+        if psword[i] in [".","_","/","@"]:
             symbl="True"
-    if digit=="True" and upper=="True" and alpha=="True" and lower=="True" and symbl=="True": #и тд со всеми вариантами
+    if digit=="True" and upper=="True" and alpha=="True" and lower=="True" and symbl=="True": 
         ans="True"
     else:
         ans="False"
