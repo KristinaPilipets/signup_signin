@@ -25,7 +25,7 @@ def psword_check(psword:str)->bool:
         ans=False
     return ans
 def autopsword()->str:
-    """auto created password
+    """automaatseltloomatud parool
     """
     str0=".,:;!_*-+()/#¤%&"
     str1 = "0123456789"
