@@ -9,7 +9,7 @@ while True:
         pswrd1=input("Kas sa tahad kasutada automaatseltloomatud parool? Y- jah, N- ei")
         if pswrd1.upper()=="Y":
             psword=autopsword()
-            print(psword)
+            print("sinu parool: "+psword)
             pswords.append(psword) #добавляем к списку 
             if log not in users:
                 users.append(log)
@@ -31,7 +31,34 @@ while True:
     elif sign.upper()=="A":
         login=input("Siseta login: ")
         if login not in users:
-            print("Kasutaja ei ole olemas")
+            print("Kasutaja ei ole olema")
+            print("Kas sa tahad regestreerida?")
+            reg=input("Y= jah, N= ei")
+            if reg.upper() =="Y":
+                log=input("Login: ")
+                pswrd1=input("Kas sa tahad kasutada automaatseltloomatud parool? Y- jah, N- ei")
+                if pswrd1.upper()=="Y":
+                    psword=autopsword()
+                    print("sinu parool: "+psword)
+                    pswords.append(psword) #добавляем к списку 
+                    if log not in users:
+                        users.append(log)
+                elif pswrd1.upper()=="N":
+                    psword=""
+                    while len(psword)!=12:
+                       try:
+                           psword=input("Siseta parool 12 sümboolid suurus: ")
+                       except:
+                            ValueError
+                    ans=psword_check(psword) #подходит ли пароль
+                    if ans != True:
+                        print ("Parool ei sobi")
+                    else:
+                        print("Regestreerimne on edukas")
+                        users.append(log)
+                        pswords.append(psword)
+            else:
+                pass
         else:
             psword=input("Siseta parool: ")
             if psword not in pswords:
