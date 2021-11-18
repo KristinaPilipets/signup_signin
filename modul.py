@@ -1,23 +1,23 @@
 from random import*
-def psword_check(psword:str)->str:
+def psword_check(psword:str)->bool:
     """функция вернет True если пароль будет соответствовать всем параметрам
     """
-    print(psword)
-    for i in range(0,13,1):
-        if psword[i].isdigit()== True: #string index out of range
+    psword=list(psword)
+    for i in psword:
+        if i.isdigit()== True: #string index out of range
             digit="True"
-        if psword[i].isalpha()== True:
+        if i.isalpha()== True:
             alpha="True"
-        if psword[i].isupper()== True:
+        if i.isupper()== True:
             upper="True"
-        if psword[i].islower()==True:
+        if i.islower()==True:
             lower="True"
-        if psword[i] in [".","_","/","@"]:
+        if i in [".","_","/","@"]:
             symbl="True"
     if digit=="True" and upper=="True" and alpha=="True" and lower=="True" and symbl=="True": 
-        ans="True"
+        ans=True
     else:
-        ans="False"
+        ans=False
     return ans
 def autopsword()->str:
     """auto created password

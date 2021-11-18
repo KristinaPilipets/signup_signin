@@ -22,11 +22,12 @@ while True:
                except:
                     ValueError
             ans=psword_check(psword) #подходит ли пароль
-            if ans!= "True":
+            if ans != True:
                 print ("Пароль не подходит")
             else:
-                users+log
-                pswords+psword
+                print("успешная регистрация")
+                users.append(log)
+                pswords.append(psword)
 
     elif sign.upper()=="A":
         login=input("Siseta login: ")
