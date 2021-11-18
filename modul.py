@@ -24,6 +24,7 @@ def psword_check(psword:str)->bool:
     else:
         ans=False
     return ans
+
 def autopsword()->str:
     """automaatseltloomatud parool
     """

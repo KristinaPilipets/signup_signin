@@ -13,7 +13,6 @@ while True:
             pswords.append(psword) #добавляем к списку 
             if log not in users:
                 users.append(log)
-
         elif pswrd1.upper()=="N":
             psword=""
             while len(psword)!=12:
