@@ -1,12 +1,12 @@
 from modul import*
-print("Регистрация и авторизация")
+print("Regestreerimne ja Autoriseerimine".center(50,"+"))
 users=["Kristina"]
 pswords=["qwerty"]
 while True:
-    sign=input("Регистрация- R, Авторизация- A, Закончить- E")
+    sign=input("Regestreerimne- R, Autoriseerimine- A, Välja- E")
     if sign.upper()=="R":
         log=input("Login: ")
-        pswrd1=input("Хотитите ли вы использовать автоматичсеки созданный пароль? Y- да, N- нет")
+        pswrd1=input("Kas sa tahad kasutada automaatseltloomatud parool? Y- jah, N- ei")
         if pswrd1.upper()=="Y":
             psword=autopsword()
             print(psword)
@@ -23,23 +23,23 @@ while True:
                     ValueError
             ans=psword_check(psword) #подходит ли пароль
             if ans != True:
-                print ("Пароль не подходит")
+                print ("Parool ei sobi")
             else:
-                print("успешная регистрация")
+                print("Regestreerimne on edukas")
                 users.append(log)
                 pswords.append(psword)
 
     elif sign.upper()=="A":
         login=input("Siseta login: ")
         if login not in users:
-            print("несуществующий пользаватель")
+            print("Kasutaja ei ole olemas")
         else:
             psword=input("Siseta parool: ")
             if psword not in pswords:
-                print("Неправильный пароль")
+                print("Vale parool")
             else:
-                print("Успешнная авторизация")
+                print("Autoriseerimine on edukas")
     elif sign.upper()=="E":
         break
     else:
-        print("такой функции нету")
+        print("See funktsioon ei ole")
