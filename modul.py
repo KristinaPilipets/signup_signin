@@ -73,9 +73,9 @@ def signup():
     if pswrd1.upper()=="Y":
        psword=autopsword()
        print("sinu parool: "+psword)
-       psword= open('pswords.txt', 'a')
-       psword.write(psword)
-       psword.close()
+       psword1= open('pswords.txt', 'a')
+       psword1.write(psword)
+       psword1.close()
     elif pswrd1.upper()=="N":
          psword=""
          while len(psword)!=12:
