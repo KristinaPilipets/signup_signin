@@ -1,6 +1,18 @@
 from random import*
-users=["Kristina"]
-pswords=["qwerty"]
+users = open('users.txt', 'w')
+users.write("Kristina")
+users.close()
+pswords = open("pswords.txt","w")
+pswords.write("qwerty")
+pswords.close()
+
+def allusers():
+    i=0
+    for login in users:
+        print(login,end="-")
+        print(pswords[i])
+        i+=1
+
 def psword_check(psword:str)->bool:
     """функция вернет True если пароль будет соответствовать всем параметрам
     """
@@ -49,7 +61,9 @@ def signup():
              log=input("login: ")
          except:
                 ValueError
-    users.append(log)
+    user= open('users.txt', 'a')
+    user.write(log)
+    user.close()
     pswrd1=""
     while pswrd1 not in ["Y","y","N","n"]:
         try:
@@ -59,7 +73,9 @@ def signup():
     if pswrd1.upper()=="Y":
        psword=autopsword()
        print("sinu parool: "+psword)
-       pswords.append(psword) #добавляем к списку 
+       psword= open('pswords.txt', 'a')
+       psword.write(psword)
+       psword.close()
     elif pswrd1.upper()=="N":
          psword=""
          while len(psword)!=12:
@@ -72,10 +88,13 @@ def signup():
              print ("Parool ei sobi")
          else:
              print("Regestreerimne on edukas")
-             users.append(log)
-             pswords.append(psword)
+             f = open('pswords.txt', 'a')
+             f.write(psword)
+             f.close()
 
 def signin():
+    users1 = open('users.txt', 'r')
+    users = users1.readlines()
     login=input("Siseta login: ")
     if login not in users:
         print("Kasutaja ei ole olema")
@@ -87,31 +106,10 @@ def signin():
             except:
                 ValueError
         if reg.upper() =="Y":
-            log=input("Login: ")
-            pswrd1=input("Kas sa tahad kasutada automaatseltloomatud parool? Y- jah, N- ei")
-            if pswrd1.upper()=="Y":
-                psword=autopsword()
-                print("sinu parool: "+psword)
-                pswords.append(psword) #добавляем к списку 
-                if log not in users:
-                    users.append(log)
-            elif pswrd1.upper()=="N":
-                psword=""
-                while len(psword)!=12:
-                    try:
-                        psword=input("Siseta parool 12 sümboolid suurus: ")
-                    except:
-                        ValueError
-                ans=psword_check(psword) #подходит ли пароль
-                if ans != True:
-                    print ("Parool ei sobi")
-                else:
-                    print("Regestreerimne on edukas")
-                    users.append(log)
-                    pswords.append(psword)
-        else:
-            pass
+            signup()
     else:
+        pswords1 = open('pswords.txt', 'r')
+        pswords = pswords1.readlines()
         psword=input("Siseta parool: ")
         if psword not in pswords:
             print("Vale parool")
@@ -120,3 +118,5 @@ def signin():
                 print("Autoriseerimine ei ole edukas")
             else:
                 print("Autoriseerimine on edukas")
+    pswords1.close()
+    users1.close()
