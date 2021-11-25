@@ -1,12 +1,8 @@
 from random import*
-users = open('users.txt', 'w')
-users.write("Kristina")
-users.close()
-pswords = open("pswords.txt","w")
-pswords.write("qwerty")
-pswords.close()
 
 def allusers():
+    """Пример функции
+    """
     i=0
     for login in users:
         print(login,end="-")
@@ -55,7 +51,14 @@ def autopsword()->str:
     return psword
 
 def signup():
-    log="Kristina"
+    """Регистрация пользывателя, выбор метода создания пароля.
+    """
+    f=open('users.txt', 'r')
+    users=[]
+    for stroka in f:
+        users.append(stroka.strip())
+    f.close()
+    log=input("Siseta login: ")
     while log in users:
          try:
              log=input("login: ")
@@ -70,10 +73,10 @@ def signup():
         except:
             ValueError
     if pswrd1.upper()=="Y":
-       psword=autopsword()
-       print("sinu parool: "+psword)
+       pswordA=autopsword()
+       print("sinu parool: "+pswordA)
        with open("pswords.txt", "a") as psword1:
-            psword1.write(psword+"\n")
+            psword1.write(pswordA + "\n")
     elif pswrd1.upper()=="N":
          psword=""
          while len(psword)!=12:
@@ -86,14 +89,20 @@ def signup():
              print ("Parool ei sobi")
          else:
              print("Regestreerimne on edukas")
-             with open("pswords.txt", "a") as psword1:
-                psword1.write(psword+"\n")
+             with open("pswords.txt", "a") as pswrd:
+                pswrd.write(psword + "\n")
 
 def signin():
-    users1 = open('users.txt', 'r')
-    users = users1.readlines()
+    """Регистрация проверка по чписку пароля и логина, при необходимости справшивает пользователя о регестрации и предлагагет выбор при ответе "да" перекидывем на функцию ркгистрации
+    """
+    f=open('users.txt', 'r')
+    userslist=[]
+    for stroka in f:
+        userslist.append(stroka.strip())
+    f.close()
     login=input("Siseta login: ")
-    if login not in users:
+    print(userslist)
+    if login not in userslist:
         print("Kasutaja ei ole olema")
         print("Kas sa tahad regestreerida?")
         reg=""
@@ -106,14 +115,16 @@ def signin():
             signup()
     else:
         pswords1 = open('pswords.txt', 'r')
-        pswords = pswords1.readlines()
+        pswords=[]
+        for string in pswords1:
+            pswords.append(string.strip())
+        pswords1.close()
+        print(pswords)
         psword=input("Siseta parool: ")
         if psword not in pswords:
             print("Vale parool")
         else:
-            if users.index(login) != pswords.index(psword):
+            if userslist.index(login) != pswords.index(psword):
                 print("Autoriseerimine ei ole edukas")
             else:
                 print("Autoriseerimine on edukas")
-    pswords1.close()
-    users1.close()
