@@ -61,9 +61,8 @@ def signup():
              log=input("login: ")
          except:
                 ValueError
-    user= open("users.txt", "a")
-    user.write(log+"\n")
-    user.close()
+    with open("users.txt", "a") as user:
+        user.write(log+"\n")
     pswrd1=""
     while pswrd1 not in ["Y","y","N","n"]:
         try:
@@ -73,9 +72,8 @@ def signup():
     if pswrd1.upper()=="Y":
        psword=autopsword()
        print("sinu parool: "+psword)
-       psword1= open('pswords.txt', 'a')
-       psword1.write(psword+"\n")
-       psword1.close()
+       with open("pswords.txt", "a") as psword1:
+            psword1.write(psword+"\n")
     elif pswrd1.upper()=="N":
          psword=""
          while len(psword)!=12:
@@ -88,9 +86,8 @@ def signup():
              print ("Parool ei sobi")
          else:
              print("Regestreerimne on edukas")
-             f = open('pswords.txt', 'a')
-             f.write(psword+"\n")
-             f.close()
+             with open("pswords.txt", "a") as psword1:
+                psword1.write(psword+"\n")
 
 def signin():
     users1 = open('users.txt', 'r')
